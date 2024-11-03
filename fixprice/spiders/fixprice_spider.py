@@ -2,50 +2,74 @@ import subprocess
 
 import scrapy
 from scrapy.http import Response
-from twisted.conch.ssh.sexpy import parse
 
-from config import Nodes
-from models import Category
+from config import env
+from models import Category, Product
 
+import logging
 
-proxy_user = 'n3ZDjKaZ'
-proxy_pass = 'nKwaNGmT'
-proxy_ip = '212.193.190.236'
-proxy_port = '62894'
+log = logging.Logger(name='fix-price')
+log.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+console_handler.setFormatter(formatter)
+log.addHandler(console_handler)
 
 
 class FixPriceSpider(scrapy.Spider):
     name = 'fix_price'
     start_urls = ["https://fix-price.com/"]
-    selected_categories = []
+
 
     def start_requests(self) -> None:
         yield scrapy.Request(self.start_urls[0],
-                             meta={'proxy': f'http://{proxy_user}:{proxy_pass}@{proxy_ip}:{proxy_port}'})
+                             meta={'proxy': f'http://{env.PROXY_USER}:{env.PROXY_PASS}@{env.PROXY_IP}:{env.PROXY_PORT}'})
 
     def parse(self, response: Response) -> None:
-            self.parse_categories_lst(response)
 
-    def parse_categories_lst(self, response: Response) -> None:
         categories_divs = response.css("body div.categories a")
         categories_lst = []
+        selected_categories = []
+
         for cat_div in categories_divs:
             category = Category(name=cat_div.css("::text").get(),
                                 link="/".join([self.start_urls[0], cat_div.attrib["href"]]))
             categories_lst.append(category)
 
-        self.selected_categories.append(categories_lst[-2])  # Example
-        print("Выбранные категории:", self.selected_categories)
+        selected_categories.append(categories_lst[-2])  # Example
+        log.info(f"Выбранные категории: {str(selected_categories)}")
+        selected_cat_list = [cat.link for cat in selected_categories]
+        yield from response.follow_all(selected_cat_list, self.parse_product)
 
-        yield response.follow_all(self.selected_categories, self.parse_goods)
-    #
-    #
-    def parse_goods(self, response: Response):
-        products_div = response.xpath('/html/body/div[1]/div/div/div/div[3]/div/div/div/div[2]/main/div[2]/div[1]/div[2]').get()
-        print(products_div)
+    def parse_product(self, response: Response):
+        products_wrappers = response.css('div.product__wrapper')
 
+        for wrapper in products_wrappers:
+            product_link = wrapper.css('a').attrib["href"]
+            yield response.follow(product_link, self.parse_product_page)
 
+    def parse_product_page(self, response: Response):
 
+        title = response.css('h1.title::text').get()
+
+        product_details_div = response.css(".product-details")
+        print(product_details_div)
+
+        brand = response.css('html body div#__nuxt div#__layout div.default-layout div.common div.page-content div.centered-layout div.nuxt-content div.container div.content div.product div.product-details div.properties-block div.additional-information div.properties p.property span.value a.link::text').get()
+        print(brand)
+
+        if not brand:
+            brand = "?"
+
+        product = Product(title=title,
+                          brand=brand,
+                          url=response.url)
+        print(product)
+        print('_________________')
+
+# <div class="product__wrapper" data-v-30abd08e><div id="cp3130179" class="product one-product-in-row" data-v-7d139f34 data-v-30abd08e><div class="wrapper sticker" data-v-4dbc8b28 data-v-7d139f34><!----><!----></div><div class="images-container" data-v-7d139f34><!----></div><div class="details" data-v-7d139f34><div class="information" data-v-7d139f34><div class="description" data-v-7d139f34><a href="/catalog/kosmetika-i-gigiena/p-3130179-tualetnaya-bumaga-omfort-amilia-2-sloya-32-rulona" class="title" data-v-7d139f34>Туалетная бумага "Comfort", Familia, 2 слоя, 32 рулона</a><!----><div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="price-wrapper price-block" data-v-06f8b9a7 data-v-7d139f34><!----><div class="visible-part card" data-v-06f8b9a7><!----><!----></div></div></div><button data-test="button" data-metrics="not-send" width="21" height="21" class="favorites button-favorites without-text" data-v-84e4fc10 data-v-7d139f34><img width="21" height="21" stroke="#0A54CC" src="/img/common/bookmark.svg" class="icon" data-v-84e4fc10><!----></button></div><!----></div></div></div>
 
 if __name__ == "__main__":
-    subprocess.run(['scrapy', 'crawl', FixPriceSpider.name])
+    from scrapy.cmdline import execute
+    execute(['scrapy', 'crawl', FixPriceSpider.name])
