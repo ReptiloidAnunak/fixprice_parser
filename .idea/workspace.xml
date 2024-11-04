@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Base of the parser is ready">
-      <change afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Ready: 80%">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,8 +155,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.fixprice_spider" />
-        <item itemvalue="Python.config" />
         <item itemvalue="Python.spider_tools" />
+        <item itemvalue="Python.config" />
         <item itemvalue="Python.draft" />
       </list>
     </recent_temporary>
@@ -187,11 +185,20 @@
       <option name="project" value="LOCAL" />
       <updated>1730675624518</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Ready: 80%">
+      <option name="closed" value="true" />
+      <created>1730700682086</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730700682086</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base of the parser is ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base of the parser is ready" />
+    <MESSAGE value="Ready: 80%" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready: 80%" />
   </component>
 </project>

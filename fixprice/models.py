@@ -1,6 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from fixprice.spiders.spider_tools import set_timestamp
 
@@ -20,7 +20,7 @@ class Product(BaseModel):
     title: str
     rpc: Optional[str] = None
     url: str
-    marketing_tags: Optional[List[str]] = None
+    marketing_tags: Optional[List[Union[str, None]]]
     brand: str
     section: Optional[List[str]] = None
     price_data: Optional[dict] = None

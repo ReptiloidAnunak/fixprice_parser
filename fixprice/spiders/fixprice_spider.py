@@ -6,7 +6,7 @@ from fixprice.models import Category, Product
 import logging
 
 from fixprice.spiders.spider_tools import get_images, get_brand, get_price_data, get_product_metadata, \
-    get_marketing_tags
+    get_special_price_marketing_tag, get_section
 
 log = logging.Logger(name='fix-price')
 log.setLevel(logging.INFO)
@@ -37,7 +37,7 @@ class FixPriceSpider(scrapy.Spider):
                                 link="/".join([self.start_urls[0], cat_div.attrib["href"]]))
             categories_lst.append(category)
 
-        selected_categories.append(categories_lst[-2])  # Example
+        selected_categories.extend([categories_lst[1], categories_lst[-2]])  # Example
         log.info(f"Выбранные категории: {str(selected_categories)}")
 
         selected_cat_list = [cat for cat in selected_categories]
@@ -50,7 +50,9 @@ class FixPriceSpider(scrapy.Spider):
         for wrapper in products_wrappers:
             product_link = wrapper.css('a').attrib["href"]
             rpc = wrapper.css('div div').attrib['id']
+
             yield response.follow(product_link, self.parse_product_page, cb_kwargs={'rpc': rpc, "category": category})
+
 
     def parse_product_page(self, response: Response, rpc: str, category: Category):
         product = Product(category=category.to_dict(),
@@ -61,7 +63,8 @@ class FixPriceSpider(scrapy.Spider):
                           assets=get_images(response),
                           price_data=get_price_data(response),
                           metadata=get_product_metadata(response),
-                          marketing_tags=get_marketing_tags(response)
+                          marketing_tags=get_special_price_marketing_tag(response),
+                          section=get_section(response)
                           )
 
         category.products_lst.append(product)
