@@ -16,3 +16,7 @@ class Config(BaseSettings):
 
 env = Config()
 
+RESULT_DIR = os.path.join(ROOT_DIR, 'result')
+if not os.path.exists(RESULT_DIR):
+    os.makedirs(RESULT_DIR)
+
