@@ -27,7 +27,6 @@ class FixPriceSpider(scrapy.Spider):
                              meta={'proxy': f'http://{env.PROXY_USER}:{env.PROXY_PASS}@{env.PROXY_IP}:{env.PROXY_PORT}'})
 
     def parse(self, response: Response) -> None:
-
         categories_divs = response.css("body div.categories a")
         categories_lst = []
         selected_categories = []

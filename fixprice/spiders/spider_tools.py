@@ -30,8 +30,12 @@ def get_special_price_marketing_tag(response: Response):
     else:
         return [None]
 
-def get_price_data(response: Response) -> dict:
 
+
+def get_current_price(response: Response):
+    response.url
+
+def get_price_data(response: Response) -> dict:
     regular_price = float(response.css('div.price-wrapper meta::attr(content)').getall()[1])
     current_price = response.xpath('/html/body/div[1]/div/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]').get()
     # print('current_price: ', current_price)
@@ -56,7 +60,6 @@ def get_product_metadata(response: Response) -> dict:
         product_metadata_dict[title] = value
 
     return product_metadata_dict
-
 
 def get_section(response: Response) -> list:
     section = response.css('.breadcrumbs div.crumb div a span::text').getall()

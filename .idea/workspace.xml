@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Ready: 80%">
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Ready: 85%. TODO: the problem of current price and variants">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixprice/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
     </list>
@@ -193,12 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730700682086</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ready: 85%. TODO: the problem of current price and variants">
+      <option name="closed" value="true" />
+      <created>1730707845441</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730707845441</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base of the parser is ready" />
     <MESSAGE value="Ready: 80%" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready: 80%" />
+    <MESSAGE value="Ready: 85%. TODO: the problem of current price and variants" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready: 85%. TODO: the problem of current price and variants" />
   </component>
 </project>
