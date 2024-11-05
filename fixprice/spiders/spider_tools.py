@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 from scrapy.http import Response
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.ie.webdriver import WebDriver
 
@@ -26,12 +27,19 @@ def get_images(response: Response) -> dict:
     return assets
 
 
-def get_special_price_marketing_tag(response: Response):
-    special_price_tag = response.css('div.price-wrapper.price div.visible-part div.auth-block p.special-auth::text').get()
-    if type(special_price_tag) is str and 'Спец цена' in special_price_tag:
-        return ['Спец цена']
-    else:
-        return [None]
+def get_marketing_tag(response: Response, driver: WebDriver) -> list:
+    # special_price_tag = response.css('div.price-wrapper.price div.visible-part div.auth-block p.special-auth::text').get()
+    driver.get(response.url)
+    time.sleep(3)
+    tags = []
+    try:
+        marketing_tag = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[2]').text
+        print('marketing_tag')
+        tags.append(marketing_tag)
+    except (NoSuchElementException, AttributeError):
+        pass
+
+    return tags
 
 
 def get_price_data(response: Response, driver: WebDriver) -> dict:
@@ -48,7 +56,6 @@ def get_price_data(response: Response, driver: WebDriver) -> dict:
     if current_price < regular_price:
         discount = round((regular_price - current_price) / (regular_price/100))
         sale_tag = f"Скидка {discount}%"
-        print(sale_tag)
     else:
         sale_tag = '-'
     price_data = dict(current=current_price, original=regular_price, sale_tag=sale_tag)

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="READY: city selection">
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="READY: get_price_data">
+      <change afterPath="$PROJECT_DIR$/draft.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixprice/driver/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/driver/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
     </list>
@@ -70,7 +70,7 @@
       <recent name="$PROJECT_DIR$/fixprice" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.draft">
+  <component name="RunManager" selected="Python.fixprice_spider">
     <configuration name="draft" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fixprice_parser" />
       <option name="ENV_FILES" value="" />
@@ -183,11 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.draft" />
         <item itemvalue="Python.fixprice_spider" />
+        <item itemvalue="Python.spider_tools" />
+        <item itemvalue="Python.draft" />
         <item itemvalue="Python.functions" />
         <item itemvalue="Python.settings" />
-        <item itemvalue="Python.spider_tools" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730767646596</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="READY: get_price_data">
+      <option name="closed" value="true" />
+      <created>1730772072060</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730772072060</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,7 +266,8 @@
     <MESSAGE value="Ready: 80%" />
     <MESSAGE value="Ready: 85%. TODO: the problem of current price and variants" />
     <MESSAGE value="READY: city selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="READY: city selection" />
+    <MESSAGE value="READY: get_price_data" />
+    <option name="LAST_COMMIT_MESSAGE" value="READY: get_price_data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

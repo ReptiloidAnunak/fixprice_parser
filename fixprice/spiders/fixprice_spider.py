@@ -7,7 +7,7 @@ from selenium.webdriver.ie.webdriver import WebDriver
 from fixprice.driver.service import select_city_serv
 from fixprice.models import Category, Product
 from fixprice.spiders.spider_tools import get_images, get_brand, get_price_data, get_product_metadata, \
-    get_special_price_marketing_tag, get_section
+    get_marketing_tag, get_section
 
 class FixPriceSpider(scrapy.Spider):
     name = 'fix_price'
@@ -56,7 +56,7 @@ class FixPriceSpider(scrapy.Spider):
                           assets=get_images(response),
                           price_data=get_price_data(response, driver),
                           metadata=get_product_metadata(response),
-                          marketing_tags=get_special_price_marketing_tag(response),
+                          marketing_tags=get_marketing_tag(response, driver),
                           section=get_section(response)
                           )
 
