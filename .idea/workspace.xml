@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Before the usage of scrapy_splash">
-      <change afterPath="$PROJECT_DIR$/chromedriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fixprice/driver/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proxy/driver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proxy/proxy.py" afterDir="false" />
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="READY: city selection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixprice/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/driver/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/driver/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +70,8 @@
       <recent name="$PROJECT_DIR$/fixprice" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.fixprice_spider">
-    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.draft">
+    <configuration name="draft" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fixprice_parser" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -90,7 +84,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draft.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -189,11 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.draft" />
         <item itemvalue="Python.fixprice_spider" />
         <item itemvalue="Python.functions" />
         <item itemvalue="Python.settings" />
         <item itemvalue="Python.spider_tools" />
-        <item itemvalue="Python.config" />
       </list>
     </recent_temporary>
   </component>
@@ -237,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730707845441</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="READY: city selection">
+      <option name="closed" value="true" />
+      <created>1730767646596</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730767646596</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,7 +257,8 @@
     <MESSAGE value="Base of the parser is ready" />
     <MESSAGE value="Ready: 80%" />
     <MESSAGE value="Ready: 85%. TODO: the problem of current price and variants" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready: 85%. TODO: the problem of current price and variants" />
+    <MESSAGE value="READY: city selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="READY: city selection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

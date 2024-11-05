@@ -1,5 +1,8 @@
+import time
 from datetime import datetime
 from scrapy.http import Response
+from selenium.webdriver.common.by import By
+from selenium.webdriver.ie.webdriver import WebDriver
 
 
 def get_brand(response: Response) -> str:
@@ -31,14 +34,24 @@ def get_special_price_marketing_tag(response: Response):
         return [None]
 
 
-def get_price_data(response: Response) -> dict:
-    regular_price = float(response.css('div.price-wrapper meta::attr(content)').getall()[1])
-    current_price = response.xpath('/html/body/div[1]/div/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]').get()
+def get_price_data(response: Response, driver: WebDriver) -> dict:
+    driver.get(response.url)
+    time.sleep(3)
+    current_price_str = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]').text
+    current_price = float(current_price_str.split(" ")[0].replace(',', '.'))
+
+    regular_price = float(response.css('div.price-wrapper meta::attr(content)').getall()[1].replace(',', '.'))
 
     if not current_price:
         current_price = regular_price
 
-    price_data = dict(current=current_price, original=regular_price, sale_tag="?")
+    if current_price < regular_price:
+        discount = round((regular_price - current_price) / (regular_price/100))
+        sale_tag = f"Скидка {discount}%"
+        print(sale_tag)
+    else:
+        sale_tag = '-'
+    price_data = dict(current=current_price, original=regular_price, sale_tag=sale_tag)
     return price_data
 
 
