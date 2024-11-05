@@ -1,21 +1,13 @@
+import time
+
 import scrapy
 from scrapy.http import Response
-from config import env
+from scrapy_selenium import SeleniumRequest
+
+from fixprice.driver.service import select_city_serv
 from fixprice.models import Category, Product
-
-import logging
-
 from fixprice.spiders.spider_tools import get_images, get_brand, get_price_data, get_product_metadata, \
     get_special_price_marketing_tag, get_section
-
-log = logging.Logger(name='fix-price')
-log.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-console_handler.setFormatter(formatter)
-log.addHandler(console_handler)
-
 
 class FixPriceSpider(scrapy.Spider):
     name = 'fix_price'
@@ -23,10 +15,11 @@ class FixPriceSpider(scrapy.Spider):
 
 
     def start_requests(self) -> None:
-        yield scrapy.Request(self.start_urls[0],
-                             meta={'proxy': f'http://{env.PROXY_USER}:{env.PROXY_PASS}@{env.PROXY_IP}:{env.PROXY_PORT}'})
+        url = "https://fix-price.com/"
+        yield SeleniumRequest(url=url, callback=self.parse, wait_time=100)
 
     def parse(self, response: Response) -> None:
+        select_city_serv(response, self.start_urls[0])
         categories_divs = response.css("body div.categories a")
         categories_lst = []
         selected_categories = []
@@ -37,13 +30,13 @@ class FixPriceSpider(scrapy.Spider):
             categories_lst.append(category)
 
         selected_categories.extend([categories_lst[1], categories_lst[-2]])  # Example
-        log.info(f"Выбранные категории: {str(selected_categories)}")
 
         selected_cat_list = [cat for cat in selected_categories]
         for cat in selected_cat_list:
-            yield response.follow(cat.link, self.parse_product, cb_kwargs={"category": cat})
 
-    def parse_product(self, response: Response, category: Category):
+            yield response.follow(cat.link, self.parse_cat_page, cb_kwargs={"category": cat})
+
+    def parse_cat_page(self, response: Response, category: Category):
         products_wrappers = response.css('div.product__wrapper')
 
         for wrapper in products_wrappers:
@@ -73,8 +66,13 @@ class FixPriceSpider(scrapy.Spider):
         print('_________________')
 
 
-# Может отсюда получится вытянуть специальную цену
-# <div class="product__wrapper" data-v-30abd08e><div id="cp3130179" class="product one-product-in-row" data-v-7d139f34 data-v-30abd08e><div class="wrapper sticker" data-v-4dbc8b28 data-v-7d139f34><!----><!----></div><div class="images-container" data-v-7d139f34><!----></div><div class="details" data-v-7d139f34><div class="information" data-v-7d139f34><div class="description" data-v-7d139f34><a href="/catalog/kosmetika-i-gigiena/p-3130179-tualetnaya-bumaga-omfort-amilia-2-sloya-32-rulona" class="title" data-v-7d139f34>Туалетная бумага "Comfort", Familia, 2 слоя, 32 рулона</a><!----><div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="price-wrapper price-block" data-v-06f8b9a7 data-v-7d139f34><!----><div class="visible-part card" data-v-06f8b9a7><!----><!----></div></div></div><button data-test="button" data-metrics="not-send" width="21" height="21" class="favorites button-favorites without-text" data-v-84e4fc10 data-v-7d139f34><img width="21" height="21" stroke="#0A54CC" src="/img/common/bookmark.svg" class="icon" data-v-84e4fc10><!----></button></div><!----></div></div></div>
+    def get_current_price(self, response: Response):
+        current_price = response.xpath('/html/body/div[1]/div/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]')
+        if current_price:
+            print('CURRENT PRICE: ', current_price.get())
+        else:
+            print('Цена не найдена.')
+
 
 if __name__ == "__main__":
     from scrapy.cmdline import execute

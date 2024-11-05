@@ -1,3 +1,6 @@
+
+from shutil import which
+
 # Scrapy settings for fixprice project
 #
 # For simplicity, this file contains only settings considered important or
@@ -7,11 +10,21 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+
 BOT_NAME = "fixprice"
 
 SPIDER_MODULES = ["fixprice.spiders"]
 NEWSPIDER_MODULE = "fixprice.spiders"
 
+SELENIUM_DRIVER_NAME = 'chrome'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
+# SELENIUM_DRIVER_ARGUMENTS = ['--headless']
+SELENIUM_DRIVER_ARGUMENTS = []
+
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_selenium.SeleniumMiddleware': 800
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "fixprice (+http://www.yourdomain.com)"

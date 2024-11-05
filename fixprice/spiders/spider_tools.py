@@ -1,6 +1,6 @@
 from datetime import datetime
-
 from scrapy.http import Response
+
 
 def get_brand(response: Response) -> str:
     brand = response.css(
@@ -31,14 +31,9 @@ def get_special_price_marketing_tag(response: Response):
         return [None]
 
 
-
-def get_current_price(response: Response):
-    response.url
-
 def get_price_data(response: Response) -> dict:
     regular_price = float(response.css('div.price-wrapper meta::attr(content)').getall()[1])
     current_price = response.xpath('/html/body/div[1]/div/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]').get()
-    # print('current_price: ', current_price)
 
     if not current_price:
         current_price = regular_price
