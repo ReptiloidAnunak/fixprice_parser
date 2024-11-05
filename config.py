@@ -1,3 +1,4 @@
+import json
 import os
 from pydantic_settings import BaseSettings
 
@@ -17,6 +18,8 @@ class Config(BaseSettings):
 env = Config()
 
 RESULT_DIR = os.path.join(ROOT_DIR, 'result')
+RESULT_JSON = os.path.join(RESULT_DIR, 'fixprice_result.json')
+
 if not os.path.exists(RESULT_DIR):
     os.makedirs(RESULT_DIR)
 

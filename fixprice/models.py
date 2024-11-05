@@ -1,33 +1,58 @@
+import json
 from datetime import datetime
+from itertools import product
+
 from pydantic import BaseModel
 from typing import List, Optional, Union
 
+from config import RESULT_JSON
 from fixprice.spiders.spider_tools import set_timestamp
 
 
 class Category(BaseModel):
     name: str
     link: str
-    products_lst: list = []
 
     def to_dict(self):
-        return {self.name: self.link}
+        return {self.name: self.link, "products": []}
+
+    def is_in_result_json(self):
+        try:
+            with open(RESULT_JSON, 'r') as file:
+                content = json.load(file)
+                cat_names_pairs_json = [list(d.keys()) for d in content]
+                cat_names_json = [pair[0] for pair in cat_names_pairs_json]
+                print("cat_names_json: ", cat_names_json)
+                if self.name in cat_names_json:
+                    print(f'{self.name} is already in JSON')
+                    return True
+                else:
+                    return False
+        except FileNotFoundError:
+            with open(RESULT_JSON, "w") as file:
+                json.dump([], file, indent=4)
+
+
+            # if self.name in
+
+    # def save_to_result_json(self):
+
 
 
 class Product(BaseModel):
     category: dict
     timestamp: int
     title: str
-    rpc: Optional[str] = None
+    rpc: Optional[str]
     url: str
     marketing_tags: Optional[List[Union[str, None]]]
     brand: str
-    section: Optional[List[str]] = None
-    price_data: Optional[dict] = None
-    stock: Optional[dict] = None
-    assets: Optional[dict] = None
-    metadata: Optional[dict] = None
-    variants: Optional[int] = None
+    section: Optional[List[str]]
+    price_data: Optional[dict]
+    stock: Optional[dict] = {}
+    assets: Optional[dict]
+    metadata: Optional[dict]
+    variants: Optional[int] = 1
 
 
     def __init__(self, category: dict, title: str, url: str, brand: str,
@@ -60,13 +85,26 @@ class Product(BaseModel):
     "title": self.title,  # Заголовок/название товара (! Если в карточке товара указан цвет или объем, но их нет в названии, необходимо добавить их в title в формате: "{Название}, {Цвет или Объем}").
     "marketing_tags": self.marketing_tags,  # Список маркетинговых тэгов, например: ['Популярный', 'Акция', 'Подарок']. Если тэг представлен в виде изображения собирать его не нужно.
     "brand": self.brand,  # Бренд товара.
-    "section": ["str"],  # Иерархия разделов, например: ['Игрушки', 'Развивающие и интерактивные игрушки', 'Интерактивные игрушки'].
+    "section": self.section,  # Иерархия разделов, например: ['Игрушки', 'Развивающие и интерактивные игрушки', 'Интерактивные игрушки'].
     "price_data": self.price_data,
-    "stock": {
-        "in_stock": bool,  # Есть товар в наличии в магазине или нет.
-        "count": int  # Если есть возможность получить информацию о количестве оставшегося товара в наличии, иначе 0.
-    },
+    "stock": self.stock,
     "assets": self.assets,
     "metadata": self.metadata,
-    "variants": int,  # Кол-во вариантов у товара в карточке (За вариант считать только цвет или объем/масса. Размер у одежды или обуви варинтами не считаются).
+    "variants": self.variants,  # Кол-во вариантов у товара в карточке (За вариант считать только цвет или объем/масса. Размер у одежды или обуви варинтами не считаются).
 }
+
+    def save_to_result_json(self):
+        print(f"product {self.title} -- save_to_result_json")
+        with open(RESULT_JSON, "r+") as file:
+            content = json.load(file)
+            rel_cat = [d for d in content if list(self.category.keys())[0] in list(d.keys())][0]
+            new_product = self.create_result_dict()
+            if new_product not in rel_cat['products']:
+                rel_cat['products'].append(new_product)
+            else:
+                print("ALREADY in JSON: ", self.title, self.rpc)
+            file.seek(0)
+            json.dump(content, file, indent=4)
+
+    def __str__(self):
+        return self.title

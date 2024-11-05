@@ -8,6 +8,8 @@ from fixprice.driver.service import select_city_serv
 from fixprice.models import Category, Product
 from fixprice.spiders.spider_tools import get_images, get_brand, get_price_data, get_product_metadata, \
     get_marketing_tag, get_section
+from tools import save_to_result_json_lst
+
 
 class FixPriceSpider(scrapy.Spider):
     name = 'fix_price'
@@ -19,8 +21,10 @@ class FixPriceSpider(scrapy.Spider):
         yield SeleniumRequest(url=url, callback=self.parse, wait_time=100)
 
     def parse(self, response: Response) -> None:
+
         driver = response.request.meta["driver"]
         select_city_serv(response, driver, self.start_urls[0])
+
         categories_divs = response.css("body div.categories a")
         categories_lst = []
         selected_categories = []
@@ -29,6 +33,11 @@ class FixPriceSpider(scrapy.Spider):
             category = Category(name=cat_div.css("::text").get(),
                                 link="/".join([self.start_urls[0], cat_div.attrib["href"]]))
             categories_lst.append(category)
+
+        for cat in categories_lst:
+            print("cat.name: ", cat.name)
+            if not cat.is_in_result_json():
+                save_to_result_json_lst(cat.to_dict())
 
         selected_categories.extend([categories_lst[1], categories_lst[-2]])  # Example
 
@@ -46,7 +55,6 @@ class FixPriceSpider(scrapy.Spider):
 
             yield response.follow(product_link, self.parse_product_page, cb_kwargs={"driver": driver, 'rpc': rpc, "category": category})
 
-
     def parse_product_page(self, response: Response, driver: WebDriver, rpc: str, category: Category):
         product = Product(category=category.to_dict(),
                           rpc=rpc,
@@ -60,10 +68,9 @@ class FixPriceSpider(scrapy.Spider):
                           section=get_section(response)
                           )
 
-        category.products_lst.append(product)
-
+        #
         print(response.url)
-        print(product)
+        product.save_to_result_json()
         print('_________________')
 
 

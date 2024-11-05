@@ -34,7 +34,6 @@ def get_marketing_tag(response: Response, driver: WebDriver) -> list:
     tags = []
     try:
         marketing_tag = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[2]').text
-        print('marketing_tag')
         tags.append(marketing_tag)
     except (NoSuchElementException, AttributeError):
         pass

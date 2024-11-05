@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="READY: get_price_data">
-      <change afterPath="$PROJECT_DIR$/draft.py" afterDir="false" />
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="READY: get_marketing_tag">
+      <change afterPath="$PROJECT_DIR$/tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
     </list>
@@ -54,6 +57,7 @@
     "Python.draft.executor": "Run",
     "Python.fixprice_spider.executor": "Run",
     "Python.functions.executor": "Run",
+    "Python.models.executor": "Run",
     "Python.settings.executor": "Run",
     "Python.spider_tools.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -71,7 +75,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.fixprice_spider">
-    <configuration name="draft" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fixprice_parser" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,7 +88,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draft.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -115,29 +119,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="functions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="fixprice_parser" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fixprice/driver" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fixprice/driver/functions.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="settings" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fixprice_parser" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,7 +132,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fixprice/settings.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fixprice/models.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -181,13 +163,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fixprice_parser" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.fixprice_spider" />
+        <item itemvalue="Python.models" />
+        <item itemvalue="Python.tools" />
+        <item itemvalue="Python.config" />
         <item itemvalue="Python.spider_tools" />
-        <item itemvalue="Python.draft" />
-        <item itemvalue="Python.functions" />
-        <item itemvalue="Python.settings" />
       </list>
     </recent_temporary>
   </component>
@@ -247,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730772072060</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="READY: get_marketing_tag">
+      <option name="closed" value="true" />
+      <created>1730773547469</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730773547469</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -267,14 +279,15 @@
     <MESSAGE value="Ready: 85%. TODO: the problem of current price and variants" />
     <MESSAGE value="READY: city selection" />
     <MESSAGE value="READY: get_price_data" />
-    <option name="LAST_COMMIT_MESSAGE" value="READY: get_price_data" />
+    <MESSAGE value="READY: get_marketing_tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="READY: get_marketing_tag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/fixprice/models.py</url>
-          <line>45</line>
+          <line>70</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

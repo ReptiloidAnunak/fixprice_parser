@@ -2,4 +2,5 @@
 .venv
 .gitignore
 .env
-draft.py
+tools.py
+result/fixprice_result.json
