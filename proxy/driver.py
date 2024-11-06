@@ -22,7 +22,7 @@ def set_proxy_chrome_driver() -> webdriver.Chrome:
     chrome_proxy_arg = f'--proxy-server=http://{proxy}'
     chrome_options.add_argument(chrome_proxy_arg)
 
-    chromedriver_path = os.path.join(ROOT_DIR, 'chromedriver')  # Замените на свой путь к chromedriver
+    chromedriver_path = os.path.join(ROOT_DIR, 'chromedriver')
 
     driver = webdriver.Chrome(executable_path=chromedriver_path, options=chrome_options)
     driver.maximize_window()
