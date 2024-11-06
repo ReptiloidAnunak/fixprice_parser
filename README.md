@@ -10,3 +10,5 @@ Yбедитесь , что на вашем компьютере установл
 `pip install --upgrade pip`<br>
 `pip install -r requirements.txt`<br>
 `scrapy crawl fix_price`<br>
+<br>
+Файл базы данных с результатами находится здесь: db_json/fixprice_result.json

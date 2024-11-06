@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Deploy#2">
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Deploy#3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,25 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.config.executor": "Run",
-    "Python.db_tools.executor": "Run",
-    "Python.draft.executor": "Run",
-    "Python.driver.executor": "Run",
-    "Python.fixprice_spider.executor": "Run",
-    "Python.functions.executor": "Run",
-    "Python.log.executor": "Run",
-    "Python.models.executor": "Run",
-    "Python.result_flask.executor": "Run",
-    "Python.settings.executor": "Run",
-    "Python.spider_tools.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Shell Script.ruh.sh.executor": "Run",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/arjuna/python_dev/freelance/fixprice_parser"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.db_tools.executor&quot;: &quot;Run&quot;,
+    &quot;Python.draft.executor&quot;: &quot;Run&quot;,
+    &quot;Python.driver.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fixprice_spider.executor&quot;: &quot;Run&quot;,
+    &quot;Python.functions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.log.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;Python.result_flask.executor&quot;: &quot;Run&quot;,
+    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.spider_tools.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Shell Script.ruh.sh.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/arjuna/python_dev/freelance/fixprice_parser&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -309,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730878112276</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Deploy#3">
+      <option name="closed" value="true" />
+      <created>1730878713759</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730878713759</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -337,7 +346,8 @@
     <MESSAGE value="run.sh updated" />
     <MESSAGE value="Deploy" />
     <MESSAGE value="Deploy#2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deploy#2" />
+    <MESSAGE value="Deploy#3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy#3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
