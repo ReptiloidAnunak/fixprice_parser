@@ -2,7 +2,7 @@ import json
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import Response
-from config import DB_JSON  # Путь к файлу с JSON-данными
+from config import DB_JSON
 
 app = FastAPI()
 

@@ -87,8 +87,6 @@ class Product(BaseModel):
     "variants": self.variants,  # Кол-во вариантов у товара в карточке (За вариант считать только цвет или объем/масса. Размер у одежды или обуви варинтами не считаются).
 }
 
-    # def is_in_result_json(self):
-
     def is_in_json_result(self):
         print(f"product {self.title} -- save_to_result_json")
         with open(DB_JSON, "rs") as file:

@@ -7,9 +7,12 @@ from scrapy.http import Response
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.ie.webdriver import WebDriver
+from logger.log import create_logger
 
+log = create_logger('Spider fix_price')
 
 def get_brand(response: Response) -> str:
+    log.info(get_brand.__name__)
     brand = response.css(
         'html body div#__nuxt div#__layout div.default-layout div.common div.page-content div.centered-layout div.nuxt-content div.container div.content div.product div.product-details div.properties-block div.additional-information div.properties p.property span.value a.link::text').get()
     if not brand:
@@ -18,6 +21,7 @@ def get_brand(response: Response) -> str:
 
 
 def get_images(response: Response) -> dict:
+    log.info(get_images.__name__)
     images_lst = response.css('.gallery div div div div img::attr(src)').getall()
 
     if not images_lst:
@@ -31,7 +35,7 @@ def get_images(response: Response) -> dict:
 
 
 def get_marketing_tag(response: Response, driver: WebDriver) -> list:
-    # special_price_tag = response.css('div.price-wrapper.price div.visible-part div.auth-block p.special-auth::text').get()
+    log.info(get_marketing_tag.__name__)
     driver.get(response.url)
     time.sleep(3)
     tags = []
@@ -45,6 +49,7 @@ def get_marketing_tag(response: Response, driver: WebDriver) -> list:
 
 
 def get_price_data(response: Response, driver: WebDriver) -> dict:
+    log.info(get_price_data.__name__)
     driver.get(response.url)
     time.sleep(3)
     current_price_str = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]').text
@@ -56,7 +61,7 @@ def get_price_data(response: Response, driver: WebDriver) -> dict:
         current_price = regular_price
 
     if current_price < regular_price:
-        discount = round((regular_price - current_price) / (regular_price/100))
+        discount = round((regular_price - current_price) / (regular_price / 100))
         sale_tag = f"Скидка {discount}%"
     else:
         sale_tag = '-'
@@ -65,6 +70,7 @@ def get_price_data(response: Response, driver: WebDriver) -> dict:
 
 
 def get_product_metadata(response: Response) -> dict:
+    log.info(get_product_metadata.__name__)
     product_metadata_dict = dict()
 
     description = response.css('div.description:nth-child(8)::text').get()
@@ -79,24 +85,24 @@ def get_product_metadata(response: Response) -> dict:
     return product_metadata_dict
 
 def get_section(response: Response) -> list:
+    log.info(get_section.__name__)
     section = response.css('.breadcrumbs div.crumb div a span::text').getall()
     return section
 
 def get_stock(response: Response, driver: WebDriver) -> dict:
-    """Error function"""
-
+    log.info(get_stock.__name__)
     driver.get(response.url)
     try:
-        print('get_stock1')
+        log.info("Попытка найти элемент get_stock1")
         product_availability_btn = driver.find_element(By.CSS_SELECTOR, '#__layout > div > div > div.page-content > div > div > div > div > div.product > div.product-details > div.controls > div.check-availability > div')
     except NoSuchElementException:
         try:
-            print('get_stock2')
+            log.info("Попытка найти элемент get_stock2")
             sleep(2)
             product_availability_btn = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div[2]/div')
         except NoSuchElementException:
             try:
-                print('get_stock3')
+                log.info("Попытка найти элемент get_stock3")
                 sleep(2)
                 product_availability_btn = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div[2]/div/svg/path[1]')
             except NoSuchElementException:
@@ -106,11 +112,12 @@ def get_stock(response: Response, driver: WebDriver) -> dict:
     product_availability_btn.click()
     sleep(5)
     stock_dict = {
-                  "stock": {"in_stock": True}
-                  }
+        "stock": {"in_stock": True}
+    }
     return stock_dict
 
 def get_pages_links(driver: WebDriver, cat_pages_to_scrap) -> list:
+    log.info(get_pages_links.__name__)
     try:
         sleep(3)
         pages_div = driver.find_element(By.XPATH,
@@ -127,8 +134,7 @@ def get_pages_links(driver: WebDriver, cat_pages_to_scrap) -> list:
     return links
 
 
-
-
 def set_timestamp() -> int:
+    log.info(set_timestamp.__name__)
     current_time = datetime.now()
     return int(round(current_time.timestamp()))
