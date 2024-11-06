@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Logger" />
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="run.sh updated">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -283,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730875299298</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="run.sh updated">
+      <option name="closed" value="true" />
+      <created>1730875702398</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730875702398</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,7 +319,8 @@
     <MESSAGE value="App V-00.1 almost ready. TODO: SOLVE THE PROBLEM OF STOCK" />
     <MESSAGE value="App V-00.1 almost ready. TODO: SOLVE THE PROBLEM OF STOCK web element" />
     <MESSAGE value="Logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Logger" />
+    <MESSAGE value="run.sh updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="run.sh updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
