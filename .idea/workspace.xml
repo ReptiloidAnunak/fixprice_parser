@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="App V-00.1 almost ready. TODO: SOLVE THE PROBLEM OF STOCK web element">
-      <change afterPath="$PROJECT_DIR$/logger/log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_json/db_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_json/db_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_json/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_json/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixprice/driver/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/driver/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/result_flask.py" beforeDir="false" afterPath="$PROJECT_DIR$/interface/result_flask.py" afterDir="false" />
-    </list>
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="Logger" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -286,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730868728282</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Logger">
+      <option name="closed" value="true" />
+      <created>1730875299298</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730875299298</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -310,7 +307,8 @@
     <MESSAGE value="The system of save product into json is ready" />
     <MESSAGE value="App V-00.1 almost ready. TODO: SOLVE THE PROBLEM OF STOCK" />
     <MESSAGE value="App V-00.1 almost ready. TODO: SOLVE THE PROBLEM OF STOCK web element" />
-    <option name="LAST_COMMIT_MESSAGE" value="App V-00.1 almost ready. TODO: SOLVE THE PROBLEM OF STOCK web element" />
+    <MESSAGE value="Logger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
