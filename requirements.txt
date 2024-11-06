@@ -1,5 +1,7 @@
 Scrapy==2.11.2
 selenium==3.141.0
+scrapy_selenium==0.0.7
 pydantic==2.9.2
 pydantic_settings==2.6.1
 flake8==7.1.1
+fastapi[standard]

@@ -4,14 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="READY: get_marketing_tag">
-      <change afterPath="$PROJECT_DIR$/tools.py" afterDir="false" />
+    <list default="true" id="dd781c1b-b075-4e48-86a3-773130765f40" name="Changes" comment="The system of save product into json is ready">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db_json/db_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/draft.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fixprice/tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interface/result_flask.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/driver/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/driver/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/driver/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/driver/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixprice/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/fixprice_spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixprice/spiders/spider_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/proxy/driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy/proxy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,10 +66,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.config.executor": "Run",
+    "Python.db_tools.executor": "Run",
     "Python.draft.executor": "Run",
+    "Python.driver.executor": "Run",
     "Python.fixprice_spider.executor": "Run",
     "Python.functions.executor": "Run",
     "Python.models.executor": "Run",
+    "Python.result_flask.executor": "Run",
     "Python.settings.executor": "Run",
     "Python.spider_tools.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -70,8 +85,9 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/proxy" />
       <recent name="$PROJECT_DIR$/fixprice" />
+      <recent name="$PROJECT_DIR$/result" />
+      <recent name="$PROJECT_DIR$/proxy" />
     </key>
   </component>
   <component name="RunManager" selected="Python.fixprice_spider">
@@ -89,6 +105,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="db_tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fixprice_parser" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/db_json" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db_json/db_tools.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -119,7 +157,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="result_flask" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fixprice_parser" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,11 +166,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fixprice" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/interface" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fixprice/models.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interface/result_flask.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,35 +201,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="fixprice_parser" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.fixprice_spider" />
-        <item itemvalue="Python.models" />
-        <item itemvalue="Python.tools" />
-        <item itemvalue="Python.config" />
         <item itemvalue="Python.spider_tools" />
+        <item itemvalue="Python.result_flask" />
+        <item itemvalue="Python.config" />
+        <item itemvalue="Python.db_tools" />
       </list>
     </recent_temporary>
   </component>
@@ -259,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730773547469</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="The system of save product into json is ready">
+      <option name="closed" value="true" />
+      <created>1730782036870</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730782036870</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,14 +304,15 @@
     <MESSAGE value="READY: city selection" />
     <MESSAGE value="READY: get_price_data" />
     <MESSAGE value="READY: get_marketing_tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="READY: get_marketing_tag" />
+    <MESSAGE value="The system of save product into json is ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="The system of save product into json is ready" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/fixprice/models.py</url>
-          <line>70</line>
+          <url>file://$PROJECT_DIR$/draft.py</url>
+          <line>21</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

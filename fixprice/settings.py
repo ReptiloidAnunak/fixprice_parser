@@ -1,6 +1,8 @@
 
 from shutil import which
 
+from config import env
+
 # Scrapy settings for fixprice project
 #
 # For simplicity, this file contains only settings considered important or
@@ -18,8 +20,21 @@ NEWSPIDER_MODULE = "fixprice.spiders"
 
 SELENIUM_DRIVER_NAME = 'chrome'
 SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
+
+# SELENIUM_DRIVER_ARGUMENTS = ['--headless', '--no-sandbox', '--disable-dev-shm-usage']
 # SELENIUM_DRIVER_ARGUMENTS = ['--headless']
-SELENIUM_DRIVER_ARGUMENTS = []
+SELENIUM_DRIVER_ARGUMENTS = [
+    # '--headless',
+    # '--no-sandbox',
+    # '--disable-dev-shm-usage',
+    # '--proxy-server=http://{user}:{password}@{ip}:{port}'.format(
+    #     user=env.PROXY_USER,
+    #     password=env.PROXY_PASS,
+    #     ip=env.PROXY_IP,
+    #     port=env.PROXY_PORT
+    # )
+]
+
 
 
 DOWNLOADER_MIDDLEWARES = {

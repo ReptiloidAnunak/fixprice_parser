@@ -1,5 +1,8 @@
 import time
 from datetime import datetime
+from tarfile import data_filter
+from time import sleep
+
 from scrapy.http import Response
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -78,6 +81,53 @@ def get_product_metadata(response: Response) -> dict:
 def get_section(response: Response) -> list:
     section = response.css('.breadcrumbs div.crumb div a span::text').getall()
     return section
+
+def get_stock(response: Response, driver: WebDriver) -> dict:
+    """Error function"""
+
+    driver.get(response.url)
+    try:
+        print('get_stock1')
+        product_availability_btn = driver.find_element(By.CSS_SELECTOR, '#__layout > div > div > div.page-content > div > div > div > div > div.product > div.product-details > div.controls > div.check-availability > div')
+    except NoSuchElementException:
+        try:
+            print('get_stock2')
+            sleep(2)
+            product_availability_btn = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div[2]/div')
+        except NoSuchElementException:
+            try:
+                print('get_stock3')
+                sleep(2)
+                product_availability_btn = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div[2]/div/svg/path[1]')
+            except NoSuchElementException:
+                product_availability_btn = driver.find_element(By.CSS_SELECTOR, '#__layout > div > div > div.page-content > div > div > div > div > div.product > div.product-details > div.controls > div.check-availability > div > svg > path:nth-child(1)')
+    #
+
+    product_availability_btn.click()
+    sleep(5)
+    stock_dict = {
+                  "stock": {"in_stock": True}
+                  }
+    return stock_dict
+
+def get_pages_links(driver: WebDriver, cat_pages_to_scrap) -> list:
+    try:
+        sleep(3)
+        pages_div = driver.find_element(By.XPATH,
+                                        '//*[@id="__layout"]/div/div/div[3]/div/div/div/div[2]/main/div[2]/div[1]/div[3]/div')
+    except NoSuchElementException:
+        sleep(3)
+        pages_div = driver.find_element(By.CSS_SELECTOR,
+                                        '#__layout > div > div > div.page-content > div > div > div > div.catalog > main > div.category-content > div:nth-child(1) > div.controls > div').get()
+
+    pages_btn = pages_div.find_element(By.TAG_NAME, 'a')
+    first_page_link = pages_btn.get_attribute('href')
+
+    links = ["=".join([first_page_link.split("=")[0], str(i)]) for i in range(1, cat_pages_to_scrap + 1)]
+    return links
+
+
+
 
 def set_timestamp() -> int:
     current_time = datetime.now()

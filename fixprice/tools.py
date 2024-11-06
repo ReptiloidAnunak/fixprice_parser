@@ -1,10 +1,10 @@
 import json
 
-from config import RESULT_JSON
+from config import DB_JSON
 
 def save_to_result_json_lst(new_data):
     try:
-        with open(RESULT_JSON, "r+") as file:
+        with open(DB_JSON, "r+") as file:
             try:
                 data = json.load(file)
             except json.JSONDecodeError:
@@ -14,7 +14,7 @@ def save_to_result_json_lst(new_data):
             json.dump(data, file, indent=4)
 
     except FileNotFoundError:
-        with open(RESULT_JSON, "w") as file:
+        with open(DB_JSON, "w") as file:
             json.dump([new_data], file, indent=4)
 
 

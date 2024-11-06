@@ -1,4 +1,3 @@
-import json
 import os
 from pydantic_settings import BaseSettings
 
@@ -16,10 +15,10 @@ class Config(BaseSettings):
 
 
 env = Config()
+START_URL = "https://fix-price.com/"
+DB_DIR = os.path.join(ROOT_DIR, 'db_json')
+DB_JSON = os.path.join(DB_DIR, 'fixprice_result.json')
 
-RESULT_DIR = os.path.join(ROOT_DIR, 'result')
-RESULT_JSON = os.path.join(RESULT_DIR, 'fixprice_result.json')
-
-if not os.path.exists(RESULT_DIR):
-    os.makedirs(RESULT_DIR)
+if not os.path.exists(DB_DIR):
+    os.makedirs(DB_DIR)
 

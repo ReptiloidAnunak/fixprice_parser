@@ -4,10 +4,9 @@ from scrapy.http import Response
 import time
 
 
-def select_city_serv(response: Response, driver, start_url):
-    driver.set_window_size(1044, 768)
+def select_city_serv(driver, start_url):
     driver.get(start_url)
-    time.sleep(3)
+    time.sleep(5)
     kill_popup_window(driver)
     time.sleep(4)
     select_city(driver)

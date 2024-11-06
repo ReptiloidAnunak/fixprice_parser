@@ -4,17 +4,16 @@ from scrapy.http import Response
 from scrapy_selenium import SeleniumRequest
 from selenium.webdriver.ie.webdriver import WebDriver
 
+from db_json.db_tools import get_product_by_cat_rpc
 from fixprice.driver.service import select_city_serv
-from fixprice.models import Category, Product
+from db_json.models import Category, Product
 from fixprice.spiders.spider_tools import get_images, get_brand, get_price_data, get_product_metadata, \
-    get_marketing_tag, get_section
-from tools import save_to_result_json_lst
-
+    get_marketing_tag, get_section, get_pages_links
+from fixprice.tools import save_to_result_json_lst
 
 class FixPriceSpider(scrapy.Spider):
     name = 'fix_price'
     start_urls = ["https://fix-price.com/"]
-
 
     def start_requests(self) -> None:
         url = "https://fix-price.com/"
@@ -23,7 +22,7 @@ class FixPriceSpider(scrapy.Spider):
     def parse(self, response: Response) -> None:
 
         driver = response.request.meta["driver"]
-        select_city_serv(response, driver, self.start_urls[0])
+        select_city_serv(driver, self.start_urls[0])
 
         categories_divs = response.css("body div.categories a")
         categories_lst = []
@@ -40,21 +39,31 @@ class FixPriceSpider(scrapy.Spider):
                 save_to_result_json_lst(cat.to_dict())
 
         selected_categories.extend([categories_lst[1], categories_lst[-2]])  # Example
-
         selected_cat_list = [cat for cat in selected_categories]
         for cat in selected_cat_list:
+            # try:
+            yield response.follow(cat.link, self.parse_cat_pages_lst, cb_kwargs={"category": cat, "driver": driver})
+            # except
+    def parse_cat_pages_lst(self, response: Response, driver, category: Category):
+       cat_pages_to_scrap = 3
+       driver.get(response.url)
+       pages_links = get_pages_links(driver, cat_pages_to_scrap)
 
-            yield response.follow(cat.link, self.parse_cat_page, cb_kwargs={"category": cat, "driver": driver})
+       for p_link in pages_links:
+           print("PAGE: ", p_link)
+           yield response.follow(p_link, self.parse_cat_page, cb_kwargs={"driver": driver, "category": category})
 
     def parse_cat_page(self, response: Response, driver, category: Category):
-        products_wrappers = response.css('div.product__wrapper')
 
+        products_wrappers = response.css('div.product__wrapper')
         for wrapper in products_wrappers:
             product_link = wrapper.css('a').attrib["href"]
             rpc = wrapper.css('div div').attrib['id']
-
-            yield response.follow(product_link, self.parse_product_page, cb_kwargs={"driver": driver, 'rpc': rpc, "category": category})
-
+            if not get_product_by_cat_rpc(category.name, rpc):
+                yield response.follow(product_link, self.parse_product_page, cb_kwargs={"driver": driver, 'rpc': rpc, "category": category})
+            else:
+                print(f'ALREADY IN DB: product rpc:: {rpc} category:: {category.name}')
+                return
     def parse_product_page(self, response: Response, driver: WebDriver, rpc: str, category: Category):
         product = Product(category=category.to_dict(),
                           rpc=rpc,
@@ -66,10 +75,9 @@ class FixPriceSpider(scrapy.Spider):
                           metadata=get_product_metadata(response),
                           marketing_tags=get_marketing_tag(response, driver),
                           section=get_section(response)
+                          # stock=get_stock(response, driver) #Problematic element
                           )
 
-        #
-        print(response.url)
         product.save_to_result_json()
         print('_________________')
 
