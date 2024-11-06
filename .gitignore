@@ -2,5 +2,5 @@
 .venv
 .gitignore
 .env
-tools.py
-result/fixprice_result.json
+fixprice/tools.py
+db_json/fixprice_result.json

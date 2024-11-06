@@ -1,11 +1,9 @@
 import json
-from datetime import datetime
-from itertools import product
 
 from pydantic import BaseModel
 from typing import List, Optional, Union
 
-from config import RESULT_JSON
+from config import DB_JSON
 from fixprice.spiders.spider_tools import set_timestamp
 
 
@@ -18,7 +16,7 @@ class Category(BaseModel):
 
     def is_in_result_json(self):
         try:
-            with open(RESULT_JSON, 'r') as file:
+            with open(DB_JSON, 'r') as file:
                 content = json.load(file)
                 cat_names_pairs_json = [list(d.keys()) for d in content]
                 cat_names_json = [pair[0] for pair in cat_names_pairs_json]
@@ -29,14 +27,8 @@ class Category(BaseModel):
                 else:
                     return False
         except FileNotFoundError:
-            with open(RESULT_JSON, "w") as file:
+            with open(DB_JSON, "w") as file:
                 json.dump([], file, indent=4)
-
-
-            # if self.name in
-
-    # def save_to_result_json(self):
-
 
 
 class Product(BaseModel):
@@ -56,10 +48,12 @@ class Product(BaseModel):
 
 
     def __init__(self, category: dict, title: str, url: str, brand: str,
-                 rpc: Optional[str] = None, marketing_tags: Optional[List[str]] = None,
-                 section: Optional[List[str]] = None, price_data: Optional[dict] = None,
-                 stock: Optional[dict] = None, assets: Optional[dict] = None,
-                 metadata: Optional[dict] = None, variants: Optional[int] = None):
+                 rpc: Optional[str],
+                 section: Optional[List[str]], price_data: Optional[dict],assets: Optional[dict],
+                 metadata: Optional[dict],
+                 stock: Optional[dict] = None,
+                 marketing_tags: Optional[List[str]] = None,
+                 variants: Optional[int] = None):
         super().__init__(
             category=category,
             timestamp=set_timestamp(),
@@ -93,9 +87,17 @@ class Product(BaseModel):
     "variants": self.variants,  # Кол-во вариантов у товара в карточке (За вариант считать только цвет или объем/масса. Размер у одежды или обуви варинтами не считаются).
 }
 
+    # def is_in_result_json(self):
+
+    def is_in_json_result(self):
+        print(f"product {self.title} -- save_to_result_json")
+        with open(DB_JSON, "rs") as file:
+            content = json.load(file)
+
+
     def save_to_result_json(self):
         print(f"product {self.title} -- save_to_result_json")
-        with open(RESULT_JSON, "r+") as file:
+        with open(DB_JSON, "r+") as file:
             content = json.load(file)
             rel_cat = [d for d in content if list(self.category.keys())[0] in list(d.keys())][0]
             new_product = self.create_result_dict()
