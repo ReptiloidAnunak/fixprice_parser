@@ -2,5 +2,11 @@
 
 **FIXPRICE_PARSER**
 
-Для запуска приложения убедителсь , что на вашем компьютере установлен хром-браузер. 
-Затем перейдите в корневую папку проекта и запустите в терминале команды `chmod +x run.sh` и `run.sh`.
+Yбедитесь , что на вашем компьютере установлен хром-браузер. 
+Затем перейдите в корневую папку проекта, положите в нее файл .env. 
+<br>Запустите в терминале команды:<br>
+`python3 -m venv .venv`<br>
+`source .venv/bin/activate`<br>
+`pip install --upgrade pip`<br>
+`pip install -r requirements.txt`<br>
+`scrapy crawl fix_price`<br>
